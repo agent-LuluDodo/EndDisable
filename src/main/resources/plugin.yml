@@ -1,0 +1,12 @@
+name: EndDisable
+version: '${project.version}'
+main: de.luludodo.enddisable.EndDisable
+api-version: '1.20'
+authors: [agent_LuluDodo]
+description: Allows you to close and open the end at will!
+commands:
+  end:
+    usage: /<command> <enable|disable>
+    description: Disables or enables the end
+    permission: endDisable.commands
+    permission-message: "§cYou don't have permission to use this command (missing: endDisable.commands)!"
