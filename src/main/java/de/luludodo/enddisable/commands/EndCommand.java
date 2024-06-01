@@ -14,19 +14,18 @@ public class EndCommand implements TabExecutor {
         switch (args.length) {
             case 1 -> {
                 if (args[0].equalsIgnoreCase("disable")) {
-                    EndDisable.config().set("enabled", false);
-                    sender.sendMessage("2§The End has been §3disabled§2!");
+                    EndDisable.getInstance().getConfig().set("enabled", false);
+                    sender.sendMessage("§2The End has been §3disabled§2!");
                 } else if (args[0].equalsIgnoreCase("enable")) {
-                    EndDisable.config().set("enabled", true);
-                    sender.sendMessage("2§The End has been §3enabled§2!");
+                    EndDisable.getInstance().getConfig().set("enabled", true);
+                    sender.sendMessage("§2The End has been §3enabled§2!");
                 } else {
                     sender.sendMessage("§4The argument \"" + args[0] + "\" is invalid must be \"enable\" or \"disable\"!");
                     break;
                 }
-                EndDisable.save();
-                EndDisable.reload();
+                EndDisable.getInstance().saveConfig();
             }
-            case 0 -> sender.sendMessage("§2The end is §3" + (EndDisable.config().getBoolean("enabled")? "enabled" : "disabled") + "§2!");
+            case 0 -> sender.sendMessage("§2The End is §3" + (EndDisable.getInstance().getConfig().getBoolean("enabled")? "enabled" : "disabled") + "§2!");
             default -> sender.sendMessage("§4You supplied too many arguments");
         }
         return true;

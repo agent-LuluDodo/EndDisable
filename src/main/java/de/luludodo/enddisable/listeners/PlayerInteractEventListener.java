@@ -10,7 +10,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 public class PlayerInteractEventListener implements Listener {
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event) {
-        if (EndDisable.config().getBoolean("enabled")) return;
+        if (EndDisable.getInstance().getConfig().getBoolean("enabled")) return;
 
         if (event.getClickedBlock() == null || event.getItem() == null) return;
         if (event.getAction() == Action.RIGHT_CLICK_BLOCK &&
@@ -20,7 +20,7 @@ public class PlayerInteractEventListener implements Listener {
         ) {
             event.setCancelled(true);
             event.getPlayer().sendTitle("§cThe End is disabled!", null, 10, 70, 20);
-            EndDisable.logger().info(event.getPlayer().getDisplayName() + " tried entering the end!");
+            EndDisable.getInstance().getLogger().info(event.getPlayer().getDisplayName() + " tried placing ender eyes!");
         }
     }
 }
